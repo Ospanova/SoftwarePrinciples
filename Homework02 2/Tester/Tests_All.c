@@ -1,0 +1,6 @@
+#include "Tests_Group000_SelfTests.c"
+#include "Tests_Group001_MemoryLeaks.c"
+#include "Tests_Group002_ArrayListCreation.c"
+#include "Tests_Group003_LinkedListCreation.c"
+#include "Tests_Group004_ArrayListAdd.c"
+#include "Tests_Group005_LinkedListAdd.c"

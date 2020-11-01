@@ -1,0 +1,86 @@
+$PROMPT>  gcc -O0 -g ListImplementation.c ArrayList.c LinkedList.c SampleUserApplication.c
+$PROMPT>  valgrind --leak-check=yes a.out
+
+==105== Memcheck, a memory error detector
+==105== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==105== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==105== Command: a.out
+==105==
+==105== error calling PR_SET_PTRACER, vgdb might block
+
+ArrayList  : list1
+Array size : 10
+Elements   : 3
+[0] 4
+[1] 8
+[2] 3
+
+LinkedList : list2
+Elements   : 7
+[0] 4
+[1] 5
+[2] 8
+[3] 3
+[4] 4
+[5] 8
+[6] 3
+
+LinkedList : list2
+Elements   : 7
+[0] 3
+[1] 3
+[2] 4
+[3] 4
+[4] 5
+[5] 8
+[6] 8
+
+ArrayList  : list3
+Array size : 3
+Elements   : 2
+[0] 8
+[1] 3
+
+LinkedList : list2
+Elements   : 3
+[0] 4
+[1] 4
+[2] 5
+
+LinkedList : list4
+Elements   : 3
+[0] 16
+[1] 16
+[2] 10
+
+Note that elements 0 and 1 point to the same 'digit', therefore that digit is doubled twice!
+
+LinkedList : list2
+Elements   : 15
+[ 0] 8
+[ 1] 16
+[ 2] 16
+[ 3] 10
+[ 4] 3
+[ 5] 8
+[ 6] 16
+[ 7] 16
+[ 8] 10
+[ 9] 3
+[10] 8
+[11] 16
+[12] 16
+[13] 10
+[14] 3
+
+There should be no memory leaks when the user application destroys all lists.
+
+==105==
+==105== HEAP SUMMARY:
+==105==     in use at exit: 0 bytes in 0 blocks
+==105==   total heap usage: 37 allocs, 37 frees, 1,872 bytes allocated
+==105==
+==105== All heap blocks were freed -- no leaks are possible
+==105==
+==105== For counts of detected and suppressed errors, rerun with: -v
+==105== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
